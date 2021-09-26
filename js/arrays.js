@@ -46,3 +46,32 @@ let carsYoungerThanFiveYears = cars.every(car => car.builtIn >= 2016);
 // .some()
 carsYoungerThanFiveYears = cars.some(car => car.builtIn < 2016);
 // = false
+
+let arr = [3]
+let copy = [1, 2, ...arr, 4, 5];
+// cpy = [1, 2, 3, 4, 5];
+
+let arr1 = [1, 2, 3]
+let arr2 = [4, 5, 6]
+let arr3 = [...arr1, ...arr2]
+
+function sum(...arr5) {
+	return arr.reduce((acc, cur) => acc + cur)
+}
+console.log(sum(1, 2, 3, 4)) // 10
+console.log(sum(1, 3, 5, 7)) // 16;
+// spread instead of "sum([1, 2, 3, 4])" : regroup all parameters
+
+// Adding multiple elements
+let numbers = [1, 2, 3];
+// Longhand
+numbers.push(4);
+numbers.push(5);
+// Shorthand
+numbers = [...numbers, 4, 5];
+
+if (numbers.includes(1))
+	// if (numbers.indexOf(1) > -1)
+
+	if (!numbers.includes(1))
+// if (numbers.indexOf(1) === -1)
