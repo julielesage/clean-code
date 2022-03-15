@@ -70,8 +70,9 @@ numbers.push(5);
 // Shorthand
 numbers = [...numbers, 4, 5];
 
-if (numbers.includes(1))
-	// if (numbers.indexOf(1) > -1)
+numbers.includes(1) = numbers.indexOf(1) > -1;
+!numbers.includes(1) = numbers.indexOf(1) === -1;
 
-	if (!numbers.includes(1))
-// if (numbers.indexOf(1) === -1)
+// REMOVE DUPLICATES FROM ARRAY USING SET
+const tab = [1, 2, 3, 3, 5, 5, 7];
+const uniq = [... new Set(tab)]; // uniq = [1, 2, 3, 5, 7]

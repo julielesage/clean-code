@@ -35,7 +35,14 @@ const randomColor = () => `#${(~~(Math.random() * (1 << 24))).toString(16)}`;
 
 // Get the value of a specified cookie
 export const cookie = name => `; ${document.cookie}`.split(`; ${name}=`).pop().split(';').shift();
-cookie('_ga'); // Result: "GA1.2.1929736587.1601974046"
+export const getCookieValue = (name) => document.cookie.match(new RegExp(`${name}=(.*?;`))?.[1];
+cookie('_ga') = getCookieValue('_ga'); // Result: "GA1.2.1929736587.1601974046"
+
+
+// Set the value of a specified cookie
+export const setCookieValue = (name, value, path, domain) =>
+	document.cookie = `${name}=${value};${path ? 'path=' + path + '; ' : ''}${domain ? 'domain=' + domain + '; ' : ''}`
+setCookieValue('working', true);
 
 // Get the text that the user has selected
 export const getSelectedText = () => window.getSelection().toString();
