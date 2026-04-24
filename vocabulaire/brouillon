@@ -1,0 +1,1140 @@
+Vocabulaire du DEV 
+
+​​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​ 
+
+​​ 
+
+ 
+
+CODER 
+
+ 
+
+fonction ASYNCHRONE 
+
+- synchrone : le déroulement de la fonction suis l’ordre du thread, le code qui s'exécute ligne après ligne en attendant la fin de l'exécution de la ligne précédente , si une ligne sort une exception ou erreur, le programme s’arrete 
+
+- asynchrone: les fonctions appelées sont indépendantes,  ce sont des promesses qui se déclarent avec async() {}, la ligne suivante n’attend pas le retour de la promesse, sauf si y’a await avant,  
+
+ 
+
+event loop 
+
+Lorsque boucle infinie bloque le programme 
+message queue = timeout exception 
+job queue = promise.resolve.reject 
+Event loops handle asynchronous callbacks in Node.js. It is the foundation of the non-blocking input/output in Node.js, making it one of the most important environmental features. 
+
+ 
+
+Recherche dichotomique 
+Si on cherche un nombre entre 1 et 1000, prendre le milieu et demander si c’est plus ou moins, puis prendre le milieu de la partie supérieure ou inférieure et recommencer...Cette recherche est beaucoup plus rapide. 
+
+ 
+
+Accronymes 
+
+ 
+ES6 = ecmascript 2015 
+IIFE : Immediately Invoke Function Expression 
+
+( () => {...} ) (); 
+
+HOF High Order Function 
+POO Programmation Orientée objet 
+RDBMS Relational Data Base Management System 
+SSL : Secure Sockets Layer 
+
+technologie standard pour la protection des données sensibles qui sont transmises entre 	deux systèmes par un algorithme de chiffrement 
+
+TLS : Transport Layer Security 
+
+Nouvelle version plus sure du SSL 
+
+HTTPS: Hyper Text Transfer Protocol Secure 
+
+sigle sur url pour mentionner qu’elle est bien protégée par SSL 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Hissage (Hoisting) 
+
+On peut déclarer une fonction après l’avoir appelée > JS hisse les déclarations de fonction 
+Pas les variables 
+
+ 
+
+Gestion tableaux  
+
+.MAP crée un nouveau tableau 
+.FOREACH modifie le tableau 
+FLATLIST : mieux que map sur react-native car n’affiche que le visible à l’écran 
+
+ 
+
+Dispatch table (pattern strategy) 
+
+const applyDiscount = { [DiscountPolicies.Simple]: applyDiscountSimple, [DiscountPolicies.FixedPrice]: applyDiscountFixedPrice, [DiscountPolicies.OnRevenue]: applyDiscountOnRevenue, [DiscountPolicies.Quantitative]: applyDiscountQuantitative, [DiscountPolicies.XthAtX]: applyDiscountXthAtX, [DiscountPolicies.XthMixedAtX]: applyDiscountXthMixedAtX, [DiscountPolicies.SimpleOnCart]: applyDiscountSimpleOnCart, [DiscountPolicies.OnCartRevenue]: applyDiscountOnCartRevenue, }[context.policy] 
+ 
+return applyDiscount(context) 
+
+DOM Document Object Model 
+
+API qui permet de lire le programme d’une page. 
+CSSOM = style CSS 
+DOM = conversion de la structure html en objet = Node Tree 
+ 
+Render Tree = viewpart 
+- Le DOM peut modifier l’html si invalide (en ajoutant un <head> manquant par exemple) 
+- son html est toujours valide 
+- ressource/model vivante pouvant etre changé par JS sans changer l’html+ interface 
+- pas de pseudo-élément comme ::before et ::after 
+- pas d’élément caché (display: none) 
+ 
+Devtools = DOM + CSSOM 
+
+ 
+
+ 
+
+Fonction pure 
+
+Dépend uniquement des paramètres qu’on lui envoie, pas de variable globale 
+=> plus facile pour debugger, elle n’a pas d’effet de bord = n’altere pas l’environnement système 
+
+ 
+
+Programmation fonctionnelle 
+
+Paradigme de programmation de type déclaratif qui met en avant l’application de fonctions et variables 
+
+ 
+
+HOF High Order Function 
+
+Grace aux fonctions pures : 
+let filterByDate = (date) => (toDo) => toDo.date === date; 
+let forToday = filterByDate(new Date()); 
+toDos.filter(forToday); 
+
+ 
+
+HOC High Order Component 
+
+Fonction qui accepte 1 composant et renvoie un nouveau composant qui réutilise le composant en props 
+class NewRoute extends Component{ 
+    render(){ 
+        const {component:Component, ...otherProps} = this.props; 
+ 
+        return( 
+          <Route render={props => ( 
+            this.props.user? ( 
+              <Component {...otherProps} />  
+              ):( 
+              <Redirect  to="/" /> 
+                ) 
+            )}  
+          /> 
+        ); 
+    } 
+} 
+
+<NewRoute path='/foo' component={Foo} /> 
+export default Foo(Bar) 
+
+ 
+
+ 
+
+Curried function 
+
+Transformer une fonction qui prend N arguments en N fonctions qui prennent chacune un des arguments. => arg1 => arg2 => arg3 => toSomething: 
+
+Let combineFunctions = (fn1, fn2) => (toDo) => { 
+
+Return fn1(toDo) && fn2(toDo); 
+
+} 
+
+Const byDate&User = combineFunctions(byDate, byUser); 
+
+toDos.filter(byDate&User); 
+
+ 
+
+Closure 
+
+Variable = fonction qui comprend 1 fonction déclarée en interne, celle-ci capture son environnement lexical et utilise les variable de la fonction externe: 
+
+function bonjour(nom) { 
+
+  var texte = 'Bonjour ' + nom; 
+
+  var dire = function() { alert(texte); } 
+
+  dire(); 
+
+  } 
+
+bonjour('Pierre-Antoine'); 
+
+ 
+
+POO Programmation Orientée objet 
+Composant Class avec constructeur, variable et méthodes 
+
+ 
+
+Event Bubbling 
+click > phase de capture > phase de bouillonnement = execution 
+le clic d’un mot s’effectue avant le clic d’un paragraphe depuis la normalisation par W3C 
+si besoin de switch les phases : addEventListener(“click”, function(), true); 
+
+ 
+
+RDBMS Relational Data Base Management System 
+dtb avec modèles en relation 
+
+ 
+
+Code Natif 
+
+Language machine directement reconnu par le processeur et exécuté (iOS, Android, …) 
+
+ 
+
+SCRIPT EXTERNES 
+
+Dans <head> à la fin avant </body>  
+
+Cet attribut définit l'URI d'un script externe. Cela peut être utilisé pour insérer des scripts autrement qu'en les insérant à même le document. Les éléments script avec un attribut src défini ne doivent pas avoir de script compris dans leurs balises. Cela peut causer un comportement inattendu où le contenu du fichier référencé est chargé mais où le contenu de l'élément est ignoré. 
+<!--/* SENSEFUEL SEARCH */--> 
+<th:block th:if="${@senseFuelSearchHelper.isEnabled()}"> 
+    <script type="text/javascript" th:src="${@senseFuelSearchHelper.getUrl()}"></script> 
+    <script type="text/javascript" th:src="${@senseFuelSearchHelper.getGdprStorageUrl()}"></script> 
+</th:block> 
+
+ 
+
+SPA vs WPA 
+SPA (Single Page Application) : application web chargée une seule fois, la navigation se fait côté client (JavaScript) sans rechargement complet de la page. 
+
+WPA (Web Progressive App / parfois utilisé pour PWA) : web app qui se comporte comme une application native (offline, installable, notifications). 
+
+SPA = architecture de navigation et rendu. 
+
+WPA/PWA = ensemble de fonctionnalités (service worker, cache, manifeste). 
+
+Une app peut être SPA sans être WPA, ou SPA + WPA en même temps. 
+
+ 
+
+ 
+
+SASS 
+
+Function vs mixin 
+La différence entre une mixin et une fonction est le résultat retourné une fois compilé. Une mixin peut vous générer plusieurs lignes de code CSS tandis qu'une fonction vous retournera uniquement une valeur. 
+
+ 
+
+Design System  
+
+Material UI, Ant Design, 
+faire des ui-kit marque blanche en plugin 
+
+ 
+
+Tooltip 
+
+= infobulle 
+
+ 
+
+ 
+
+ 
+
+STACK 
+
+React 
+bibliothèque Javascript libre développée par facebook en 2013 qui facilite la création de page web avec du JSX et la création de composants réutilisables dépendant d’un état et pouvant accueillir des données. 
+Performante, elle ne met à joour que les composants qui ont changé au lieu de tout recharger. 
+DOM virtuel = React DOM render a node tree, elle compare les keys et ne charge que les différences 
+JSX = React.createElement(…) => objet 
+
+ 
+
+React hooks under the hood 
+
+Dispatcher in fiber momoized state of queue of hooks 
+UseEffect : Injecte dans le fiber.updateQueue.lastEffect.next un objet {tag, next, create, destroy, inputs} 
+UseState = useReducer 
+
+React-native 
+native side + JS side + bridge 
+
+ 
+
+MERN stack 
+
+MongoDB - document database 
+
+Express(.js) - Node.js web framework 
+
+React(.js) - a client-side JavaScript library 
+
+Node(.js) - the premier JavaScript web server 
+
+MEVN stack  
+
+MongoDB - document database 
+
+Express(.js) - Node.js web framework 
+
+Vue(.js) - a client-side JavaScript framework 
+
+Node(.js) - the premier JavaScript web server 
+
+Apache Cordova 
+
+Hybride mobile framework 
+
+Small packages 
+
+Quicker build then add plugins 
+
+Less performance 
+
+React Native 
+
+Hypbride mobile framework 
+
+Heavy, layer built 
+
+Provide native function & support 
+
+Faster native application 
+
+UI component linked to native UI views 
+
+Next.JS/ Nuxt.J.S 
+
+Framework pour un rendu du client Single Page Application côté serveur. 
+SPA = plus rapide, front-end plus dynamique mais mauvais SEO (pas d’html dans serveur) 
+Nuxt et Next permettent de traiter et parser un premier arbre statique rendu JS depuis le serveur 
+
+Code spliting depuis le serveur : /pages / components 
+
+Routage simple des pages 
+
+Exportation statique du site (vs SPA dynamique) 
+ 
+
+ 
+
+PLUGIN 
+
+ 
+
+Webpack 
+permet de minifier le code dans un seul fichier qui optimise le poids du code JS + images + CSS, sorte de module bundler, utile pour importer des modules et créer des plugins, comme node mais côté front. Pour grosse appli, besoin d’un fichier de configuration, d’un web server avec auto-rafraichissement. Il minifie pour le navigateur et permet d’exclure React ou Java Springboot à la compilation. Imaginons 160 modules de versions différentes => trop lourd à c tout compiler d’un coup. 
+ 
+
+Babel 
+
+Compile le JSX et l’ES2015 en JS 
+
+ 
+
+Polyfill 
+
+Développement d’une fonction spécifique si une méthode ne fonctionne pas sur un browser par exemple. Avant d’arriver a ce cas, on peut vérifier la compatibilité sur CanIUse 
+
+If (typeof object.method !== ‘function) { 
+
+object.method = () => {} 
+
+} 
+
+ 
+
+PartyTown 
+Permet de lancer le serveur en lazy loading pour un démarrage plus rapide 
+
+ 
+
+Forest Admin 
+
+Utilisé pour créer des backoffice 
+
+ 
+
+React Profiler 
+
+Plugin collectant les temps de r’endering de chauqe composant , permet d’identifier les problemes de performances 
+ 
+
+API 
+
+ 
+
+XML XHR HTTP 
+
+Requete référence d’une API 
+
+ 
+
+REST API 
+use http, sans état, orienté Client-Server 
+
+ 
+
+CONTENTFUL 
+
+Webhooks 
+
+Webhooks are HTTP callbacks which can be used to send notifications when data in Contentful is changed, allowing external systems to react to changes to do things such as trigger a website rebuild or send a notification to a chat application. 
+
+GRANULARITE 
+
+ 
+La granularité des données désigne leur niveau de détail. Plus la granularité est fine, plus la donnée est détaillée et son analyse précise. Il est toutefois important de noter que la granularité des données détermine directement l'espace de stockage nécessaire pour la base de données. 
+
+ 
+
+ENVIRONNEMENT & FRAMEWORK 
+
+NODE.JS 
+
+Environnement d’execution javascript cross-plateforme. Framework: express, socket, meteor, koa, nest, strapi, react-native, etc 
+
+ 
+
+STATE: REDUX, VUEX, react-context, etc 
+
+Librairie qui centralise les donnnées et les actions, elle structure en 3 principes l’état de l’application, qui est la source unique de vérité, en lecture seule. (??) Les reducers doievnt être des fonctions pures. (Reducer + flux = redux) 
+>> un magasin de données envoie une props à un composant, l’action dispatcher envoie l’info au reducer qui met à jour le magasin de données. 
+IndexedDB: large scale storage , noSQL, dans le navigateur pour de plus gros volume de data que les cookies et éviter d’utiliser Redux, mais peu conseillé 
+
+SECURITE 
+
+Injections de code SQL 
+
+ 
+
+Nettoyer tout input de script avec  
+function mysqlEscape(stringToEscape){ 
+    if(stringToEscape == '') { 
+        return stringToEscape; 
+    } 
+ 
+    return stringToEscape 
+        .replace(/\\/g, "\\\\") 
+        .replace(/\'/g, "\\\'") 
+        .replace(/\"/g, "\\\"") 
+        .replace(/\n/g, "\\\n") 
+        .replace(/\r/g, "\\\r") 
+        .replace(/\x00/g, "\\\x00") 
+        .replace(/\x1a/g, "\\\x1a"); 
+} 
+
+ 
+
+ 
+
+CSP : Content Security Policy  
+
+Une Content Security Policy (CSP) ou stratégie de sécurité du contenu permet d'améliorer la sécurité des sites web en permettant de détecter et réduire certains types d'attaques, dont les attaques XSS (en-US) (Cross Site Scripting) et les injections de contenu. Ces attaques peuvent être utilisées dans divers buts, comme le vol de données, le défacement de site ou la diffusion de malware. 
+Pour activer CSP, vous devez configurer vos serveurs web afin d'ajouter un en-tête (header) HTTP Content-Security-Policy aux réponses 
+
+ 
+
+CSRF : cross-site request forgery 
+
+attaque de falsification de demande intersite  
+cookies anti-CSRF 
+<input type="hidden" name="token_csrf" value="48rtyu9962dd4s3assa" /> 
+attribut SameSite LAX ou SameSite Strict  
+
+ 
+
+ACCESSIBILITE 
+
+Image redimensionnées -> TwicPics / Cloudinary + ALT 
+texte lisible même avec ::hover 
+navigation simple avec clavier et textes d’ancrage avec les encadrés 
+rapidité de chargement 
+sitemap 
+transcription de video 
+titres de page précis, texte sur boutons 
+skip-link comme sur amazon 
+bonne hierarchie des titres 
+outils:  LightHouse rapport => Mobile first toujours, aCe, crawler sur onCrawl, axe web accessibility testing, siteImprove Accessibility Checker 
+voir lighthouse 
+ 
+SEO 
+
+Crawler un site : qu'est-ce que c'est ? Crawler signifie littéralement « scanner ». Autrement dit, il s'agit d'extraire un maximum d'informations possibles d'un site web. Cette analyse permet ainsi de connaître parfaitement la structure d'un site et de résoudre ses problèmes éventuels. 
+
+Un fichier robots. txt indique aux robots d'exploration d'un moteur de recherche les URL auxquelles il peut accéder sur votre site. Son objectif principal est d'éviter de surcharger votre site de demandes. Il ne sert pas à empêcher qu'une page Web figure dans les résultats de recherche Google. 
+ 
+poursuivre en vertu de la Section 508 de la loi sur les Américains handicapés (Americans with Disabilities Act, ADA). 
+ 
+SEO  
+
+SPA (single page App) 
+ 
+Tracking par Datalayer Google Analytics / GTM 
+meta-tags 
+redirection des url avec un user-agent 
+Server Side Rendering with Next / Nuxt 
+ 
+données tructurées JsonLD: champ de recherche + url + logo obligatoire dans toutes les pages 
+ 
+redirection 301 d’anciennes url pour éviter les 404 et plaire à Google 
+
+ 
+
+ 
+ 
+PERFORMANCE 
+Cache Redis avec @cacheable avant les fonctions 
+voir lighthouse 
+
+Outils APM : Application Performance Management 
+ 
+
+actions: 
+
+Suivi de l’expérience de l’utilisateur final 
+
+Découverte et modélisation de l’architecture d’exécution des applications 
+
+Profilage des transactions défini par l’utilisateur 
+
+Suivi des composantes de l’application 
+
+Rapports et analyse des données d’application 
+
+Grafana 
+
+PIM, Product Information Management 
+
+ 
+
+SCALABILITE 
+
+Se dit d’une application capable de s’étendre sur plus de ressources si besoin: plus de serveurs, plus de données, etc. Elle a besoin d’être cloud-native, compartimentée en architecture micro-service 
+
+ 
+
+Understanding Application Scalability 
+
+Scalability refers to an application’s ability to handle increasing loads and user traffic while maintaining optimal performance. For Node.js applications, achieving scalability involves various considerations, including database optimization, caching, load balancing, and horizontal scaling. 
+
+Optimizing Database Performance 
+
+Efficiently managing database operations is crucial for scaling Node.js applications. Techniques such as indexing, denormalization, and connection pooling can significantly enhance database performance. Additionally, adopting NoSQL databases or employing sharding techniques can distribute data across multiple servers, improving read and write operations. 
+
+Implementing Caching Mechanisms 
+
+Caching can greatly enhance the performance and scalability of Node.js applications. Utilizing caching mechanisms like Redis or Memcached can store frequently accessed data in memory, reducing the load on the database and improving response times. Caching can be applied to both server-side and client-side components for maximum efficiency. 
+
+A basic example of caching mechanisms with Redis in Node.Js: 
+
+const express = require('express'); 
+const redis = require('redis'); 
+const app = express(); 
+const port = 3000; 
+ 
+// Create a Redis client 
+const client = redis.createClient(); 
+// Middleware function to check cache 
+const checkCache = (req, res, next) => { 
+  const { id } = req.params; 
+  // Check if data is present in the cache 
+  client.get(id, (err, data) => { 
+    if (err) throw err; 
+    // If data exists in the cache 
+    if (data !== null) { 
+      res.send(JSON.parse(data)); // Serve data from cache 
+    } else { 
+      next(); // Proceed to the next middleware 
+    } 
+  }); 
+}; 
+// Endpoint to fetch and cache data 
+app.get('/api/products/:id', checkCache, (req, res) => { 
+  const { id } = req.params; 
+  // Simulate fetching data from a database 
+  const product = { 
+    id, 
+    name: 'Product ' + id 
+    // ... other product details 
+  }; 
+  // Store fetched data in the cache 
+  client.setex(id, 3600, JSON.stringify(product)); // Expiry set to 1 hour (3600 seconds) 
+  res.send(product); // Serve data to the client 
+}); 
+// Start the server 
+app.listen(port, () => { 
+  console.log(`Server running on port ${port}`); 
+}); 
+
+Load Balancing Techniques 
+
+Load balancing helps distribute incoming requests across multiple servers, ensuring optimal resource utilization and preventing bottlenecks. Employing load balancing techniques such as round-robin, least connections, or weighted algorithms can evenly distribute traffic and enhance application availability and performance. 
+
+Scaling with Message Queues 
+
+Integrating message queues, such as RabbitMQ or Apache Kafka, enables asynchronous communication between different components of a Node.js application. Message queues decouple time-consuming or resource-intensive tasks, allowing them to be processed independently and increasing overall application responsiveness and scalability. 
+
+Here’s an example of implementing message queues in a Node.js application using the popular message broker RabbitMQ: 
+
+const amqp = require('amqplib'); 
+ 
+async function connect() { 
+  try { 
+    // Establish a connection to RabbitMQ 
+    const connection = await amqp.connect('amqp://localhost'); 
+     
+   // Create a channel 
+    const channel = await connection.createChannel(); 
+     
+   // Create a queue 
+    const queue = 'my_queue'; 
+    await channel.assertQueue(queue, { durable: true }); 
+     
+   // Send a message to the queue 
+    const message = 'Hello, RabbitMQ!'; 
+    channel.sendToQueue(queue, Buffer.from(message), { persistent: true }); 
+     
+   console.log('Message sent to the queue.'); 
+     
+   // Consume messages from the queue 
+    channel.consume(queue, (msg) => { 
+      const receivedMessage = msg.content.toString(); 
+      console.log('Received message:', receivedMessage); 
+       
+     // Acknowledge the message 
+      channel.ack(msg); 
+    }); 
+     
+} catch (error) { 
+    console.error('Error:', error); 
+  } 
+} 
+// Call the connect function 
+connect(); 
+
+Horizontal Scaling with Containerization 
+
+Containerization technologies like Docker enable horizontal scaling by encapsulating application components into lightweight, isolated containers. By running multiple containers simultaneously, developers can efficiently handle increased traffic demands and dynamically scale resources based on workload. 
+
+Utilizing Content Delivery Networks (CDNs) 
+
+Content Delivery Networks (CDNs) can dramatically improve the performance and scalability of Node.js applications, especially when serving static assets or multimedia content. CDNs distribute content across multiple servers globally, reducing latency and minimizing server load, resulting in faster response times for users across different geographical locations. 
+
+Monitoring and Performance Optimization 
+
+Continuous monitoring and performance optimization are essential for identifying and resolving performance bottlenecks. Utilizing monitoring tools like New Relic or Prometheus can provide insights into application performance, resource utilization, and potential areas for optimization, ensuring optimal scalability and user experience. 
+
+Here’s an example of implementing monitoring and performance optimization in a Node.js application using the popular monitoring tool Prometheus and the performance analysis library Node.js Clinic: 
+
+const express = require('express'); 
+const prometheus = require('prom-client'); 
+const clinic = require('clinic'); 
+ 
+// Create an Express application 
+const app = express(); 
+const port = 3000; 
+// Enable Prometheus metrics 
+prometheus.collectDefaultMetrics(); 
+// Define a custom metric for tracking request duration 
+const requestDurationMetric = new prometheus.Histogram({ 
+  name: 'http_request_duration_seconds', 
+  help: 'Duration of HTTP requests in seconds', 
+  buckets: [0.1, 0.5, 1, 2, 5], // Define custom buckets for the histogram 
+}); 
+// Middleware function to track request duration 
+const trackRequestDuration = (req, res, next) => { 
+  const start = process.hrtime(); 
+   
+res.on('finish', () => { 
+    const duration = process.hrtime(start); 
+    const durationInSeconds = duration[0] + duration[1] / 1e9; 
+     
+   // Record the request duration metric 
+    requestDurationMetric.observe(durationInSeconds); 
+  }); 
+   
+next(); 
+}; 
+// Use the tracking middleware for all routes 
+app.use(trackRequestDuration); 
+// Endpoint for testing purposes 
+app.get('/api/test', (req, res) => { 
+  // Simulate some processing time 
+  const delay = Math.random() * 1000; 
+  setTimeout(() => { 
+    res.send('Test endpoint'); 
+  }, delay); 
+}); 
+// Endpoint to expose Prometheus metrics 
+app.get('/metrics', (req, res) => { 
+  res.set('Content-Type', prometheus.register.contentType); 
+  res.send(prometheus.register.metrics()); 
+}); 
+// Start the server 
+app.listen(port, () => { 
+  console.log(`Server running on port ${port}`); 
+}); 
+// Start the performance analysis using Node.js Clinic 
+clinic({ command: 'server.js' }); 
+
+Handling Session Management 
+
+When scaling Node.js applications, managing sessions becomes a critical aspect. Employing session stores like Redis or utilizing session management libraries ensures session persistence and enables seamless scaling across multiple instances or servers, improving application reliability and user experience. 
+
+Here’s an example of handling session management in a Node.js application using the popular session middleware called express-session: 
+
+const express = require('express'); 
+const session = require('express-session'); 
+const app = express(); 
+const port = 3000; 
+ 
+// Configure session middleware 
+app.use(session({ 
+  secret: 'your-secret-key', 
+  resave: false, 
+  saveUninitialized: false, 
+})); 
+// Endpoint to set session data 
+app.get('/set', (req, res) => { 
+  // Set session data 
+  req.session.username = 'JohnDoe'; 
+  req.session.email = 'johndoe@example.com'; 
+  res.send('Session data set.'); 
+}); 
+// Endpoint to get session data 
+app.get('/get', (req, res) => { 
+  // Get session data 
+  const username = req.session.username; 
+  const email = req.session.email; 
+  res.send(`Username: ${username}, Email: ${email}`); 
+}); 
+// Endpoint to destroy session 
+app.get('/logout', (req, res) => { 
+  // Destroy session 
+  req.session.destroy(); 
+  res.send('Session destroyed.'); 
+}); 
+// Start the server 
+app.listen(port, () => { 
+  console.log(`Server running on port ${port}`); 
+}); 
+
+Dealing with Real-time Communication 
+
+Real-time communication is a common requirement for many applications. Integrating libraries like Socket.io or using WebSockets allows bidirectional, event-based communication between clients and servers. Scaling real-time features can be achieved through load balancing, horizontal scaling, and efficient event-handling strategies. 
+
+Here’s an example of dealing with real-time communication in a Node.js application using the popular library Socket.IO: 
+
+const express = require('express'); 
+const http = require('http'); 
+const socketIO = require('socket.io'); 
+ 
+const app = express(); 
+const server = http.createServer(app); 
+const io = socketIO(server); 
+// Event handler for new socket connections 
+io.on('connection', (socket) => { 
+  console.log('New socket connection:', socket.id); 
+  // Event handler for chat messages 
+  socket.on('chat message', (message) => { 
+    console.log('Received message:', message); 
+    // Broadcast the message to all connected sockets 
+    io.emit('chat message', message); 
+  }); 
+  // Event handler for socket disconnection 
+  socket.on('disconnect', () => { 
+    console.log('Socket disconnected:', socket.id); 
+  }); 
+}); 
+// Serve static files 
+app.use(express.static('public')); 
+// Start the server 
+const port = 3000; 
+server.listen(port, () => { 
+  console.log(`Server running on port ${port}`); 
+}); 
+
+Security Considerations 
+
+As applications scale, it becomes essential to address security concerns. Implementing measures such as input validation, authentication, authorization, and secure communication protocols is crucial to safeguarding user data and protecting against potential vulnerabilities or attacks. 
+
+Leveraging Cloud Infrastructure 
+
+Cloud platforms like AWS, Azure, or Google Cloud offer scalable infrastructure options that simplify the process of scaling Node.js applications. Utilizing auto-scaling capabilities, managed databases, and serverless computing can enable seamless scaling based on demand, reducing administrative overhead and enhancing application performance. 
+
+Ensuring Fault Tolerance 
+
+Designing fault-tolerant architectures is crucial for high-traffic Node.js applications. Employing techniques like redundant server setups, distributed caching, and graceful degradation can ensure application availability and resilience, even in the face of failures or traffic spikes. 
+
+Testing and Performance Benchmarking 
+
+Thorough testing and performance benchmarking are essential to validate the scalability of Node.js applications. Load testing tools like Apache JMeter or Artillery can simulate high user loads, allowing developers to identify performance bottlenecks and fine-tune application configurations for optimal scalability. 
+
+Here’s an example of how you can perform testing and performance benchmarking in a Node.js application using the popular testing framework called Mocha and the benchmarking library called Bench. 
+
+const assert = require('assert'); 
+const mocha = require('mocha'); 
+const describe = mocha.describe; 
+const it = mocha.it; 
+const bench = require('bench'); 
+const suite = bench.Suite; 
+ 
+// Test example 
+describe('Array', () => { 
+  describe('#indexOf()', () => { 
+    it('should return -1 when the value is not present', () => { 
+      assert.strictEqual([1, 2, 3].indexOf(4), -1); 
+    }); 
+    it('should return the correct index when the value is present', () => { 
+      assert.strictEqual([1, 2, 3].indexOf(2), 1); 
+    }); 
+  }); 
+}); 
+// Benchmark example 
+suite('Array#indexOf()', () => { 
+  const arr = [1, 2, 3]; 
+   
+bench('without cache', () => { 
+    arr.indexOf(2); 
+  }); 
+  bench('with cache', () => { 
+    const cache = {}; 
+    arr.forEach((num, index) => { 
+      cache[num] = index; 
+    }); 
+    cache[2]; 
+  }); 
+}); 
+// Run the tests 
+mocha.run(); 
+ 
+
+Feature FLIPPING 
+
+Le feature flipping constitue un ensemble d’outils et méthodes permettant d’activer et désactiver des fonctionnalités d’une application, sans relivraison de code pour des populations distinctes. Il s’opère avec un feature flag pour activer/desactiver une fonctionnalité. Avantages : 
+ 
+
+Déploiement en continu 
+
+Sécurisation des processus de déploiement 
+
+Améliorer l’expérience utilisateur par l’expérimentation A/B testing 
+
+Une plus grande réactivité en cas de cyberattaque du Système d’information (SI) 
+
+ 
+Synonymes: feature flagging, débrayabilité, feature toggling 
+ 
+Typescript 
+CDN 
+
+STATE MANAGEMENT 
+
+CI/CD 
+
+LINTING 
+
+OBSERVABILITY 
+
+ACCESSIBILITY 
+ 
+DESIGN SYSTEM 
+ 
+
+MICRO FRONT-END 
+HEXAGONAL BACKEND 
+TDD for BACKEND 
+ 
+ 
+
+Flux data 
+Définition Delta 
+Dans la gestion des flux d'offres en e-commerce, le terme "delta" désigne généralement la différence entre deux versions successives d'un flux d'offres (ou catalogue produit). Voici ce que cela implique concrètement : 
+
+ 
+
+1. Définition du Delta 
+
+Mise à jour incrémentielle : Le delta représente uniquement les modifications (ajouts, suppressions, mises à jour) entre deux versions d'un flux, plutôt que de transmettre l'intégralité du catalogue à chaque fois. 
+
+Exemple : Si un produit change de prix, est supprimé ou qu'un nouveau produit est ajouté, seul ce changement est envoyé dans le delta. 
+
+ 
+
+2. À quoi ça sert ? 
+
+Optimisation des ressources : Réduire la taille des fichiers échangés et la charge sur les serveurs. 
+
+Efficacité : Permet aux plateformes (marketplaces, comparateurs de prix) de mettre à jour leurs bases de données plus rapidement. 
+
+Synchronisation : Assurer que les informations affichées (prix, stocks, descriptions) sont toujours à jour. 
+
+ 
+
+3. Formats courants 
+
+Fichiers XML/CSV/JSON : Les deltas sont souvent fournis dans ces formats, avec des balises ou colonnes indiquant le type de modification (ex: <update>, <delete>, <new>). 
+
+APIs : Certaines plateformes utilisent des APIs pour envoyer/recevoir des deltas en temps réel. 
+
+ 
+
+4. Exemple concret 
+
+Supposons un flux initial avec 100 produits. Le lendemain, 2 produits sont mis à jour et 1 est supprimé. Le delta contiendra uniquement ces 3 modifications, et non les 100 produits. 
+
+ 
+
+5. Outils et bonnes pratiques 
+
+Outils : Des solutions comme Akeneo, Mirakl, ou des ETL (Talend, Informatica) gèrent souvent les deltas automatiquement. 
+
+Bonnes pratiques :  
+
+Fréquence : Envoyer des deltas régulièrement (ex: toutes les heures ou en temps réel). 
+
+Validation : Vérifier que les deltas sont bien appliqués côté partenaire pour éviter les incohérences. 
+
+ 
+
+En résumé, le delta est un mécanisme clé pour maintenir la synchronisation des données entre vendeurs et plateformes, tout en optimisant les performances. Est-ce que tu travailles sur un projet spécifique où cette notion est importante ? 
+
+10:50 
+
+et un ETL c'est quoi ? 
+
+11:04 
+
+Un ETL (Extract, Transform, Load) est un processus informatique essentiel en gestion de données, notamment en e-commerce, en data science et en business intelligence. Voici une explication claire et concise : 
+
+ 
+
+1. Définition 
+
+Un ETL est un outil ou un processus qui permet de : 
+
+Extraire (Extract) : Récupérer des données depuis différentes sources (bases de données, fichiers, APIs, etc.). 
+
+Transformer (Transform) : Nettoyer, enrichir, structurer ou agréger ces données pour les rendre exploitables. 
+
+Charger (Load) : Envoyer les données transformées vers une destination (base de données, data warehouse, CRM, etc.). 
+
+ 
+
+2. À quoi ça sert ? 
+
+Centralisation : Regrouper des données dispersées dans un seul endroit. 
+
+Qualité des données : Corriger les erreurs, supprimer les doublons, uniformiser les formats. 
+
+Automatisation : Mettre à jour les données régulièrement sans intervention manuelle. 
+
+Analyse : Préparer les données pour des outils d'analyse ou de reporting. 
+
+ 
+
+3. Exemples d'utilisation en e-commerce 
+
+Synchronisation des catalogues : Extraire les produits d'un ERP, les transformer pour les adapter au format d'un marketplace (Amazon, Cdiscount), puis les charger. 
+
+Gestion des stocks : Mettre à jour les niveaux de stock en temps réel entre plusieurs canaux de vente. 
+
+Analyse client : Agréger les données de vente, de CRM et de support pour créer des rapports personnalisés. 
+
+ 
+
+4. Outils populaires 
+
+Open source : Talend, Apache NiFi, Pentaho. 
+
+Cloud : AWS Glue, Google Dataflow, Azure Data Factory. 
+
+Solutions SaaS : Zapier, Fivetran, Stitch. 
+
+ 
+
+5. Différence avec ELT 
+
+ETL : La transformation se fait avant le chargement (idéal pour des données structurées). 
+
+ELT : La transformation se fait après le chargement (adapté aux gros volumes de données brutes, comme dans le Big Data). 
+
+ 
+
+En résumé, un ETL est un pont intelligent entre tes sources de données et tes outils d'analyse ou de vente, qui te fait gagner du temps et de la précision. Est-ce que tu envisages d'utiliser un ETL pour un projet en particulier, Julie ? 
+
+ 
+
+ 
+
+ 
+
+ 
